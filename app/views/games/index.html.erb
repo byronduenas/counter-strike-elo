@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Games</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Winner</th>
+      <th>Loser</th>
+      <th>Winner score</th>
+      <th>Loser score</th>
+      <th>Map</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.winner.name %></td>
+        <td><%= game.loser.name %></td>
+        <td><%= game.winner_score %></td>
+        <td><%= game.loser_score %></td>
+        <td><%= game.map.name %></td>
+        <td><%= I18n.l game.date, format: :short %></td>
+        <td><%= link_to 'Show', game %></td>
+        <td><%= link_to 'Edit', edit_game_path(game) %></td>
+        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Game', new_game_path %>
+<br>
+<%= link_to 'Go To Teams', teams_path %>
+<br>
+<%= link_to 'Go To Maps', maps_path %>
